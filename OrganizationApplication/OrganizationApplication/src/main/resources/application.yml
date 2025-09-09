@@ -1,0 +1,59 @@
+spring:
+   application:
+      name: OrganizationApplication
+
+server:
+   port: 8083
+
+resilience4j:
+   circuitbreaker:
+# Below are resilience4j configurations
+      instances:
+         OrgaizationDepartmentsClient: #the name we defined as our circuit breaker
+            registerHealthIndicator: true
+            eventConsumerBufferSize: 10
+            failureRateThreshold: 50 #at 50% circuit breaker will change the status
+            minimumNumberOfCalls: 5
+            automaticTransitionFromOpenToHalfOpenEnabled: true
+            waitDurationInOpenState: 5s # In production waiting time should be very low in nano and micro second level
+            permittedNumberOfCallsInHalfOpenState: 3 #just to check our application is up or not
+            slidingWindowSize: 10
+            slidingWindowType: COUNT_BASED
+
+         OrganizationDepartmentWithEmployeeClient: #the name we defined as our circuit breaker
+            registerHealthIndicator: true
+            eventConsumerBufferSize: 10
+            failureRateThreshold: 50 #at 50% circuit breaker will change the status
+            minimumNumberOfCalls: 5
+            automaticTransitionFromOpenToHalfOpenEnabled: true
+            waitDurationInOpenState: 5s # In production waiting time should be very low in nano and micro second level
+            permittedNumberOfCallsInHalfOpenState: 3 #just to check our application is up or not
+            slidingWindowSize: 10
+            slidingWindowType: COUNT_BASED
+
+   retry:
+      instances:
+
+         OrgaizationDepartmentsClient: # below configs say that within 10s only 10 requests are allowed
+            maxRetryAttempts: 10
+            waitDuration: 2s
+            registeredHealthIndicator: true
+
+         OrganizationDepartmentWithEmployeeClient: # below configs say that within 10s only 10 requests are allowed
+            maxRetryAttempts: 10
+            waitDuration: 2s
+            registeredHealthIndicator: true
+
+   ratelimiter:
+      instances:
+         OrgaizationDepartmentsClient:
+            registeredHealthIndicator: true
+            limitForPeriod: 10
+            limitRefreshPeriod: 10s
+            timeoutDuration: 3s
+
+         OrganizationDepartmentWithEmployeeClient:
+            registeredHealthIndicator: true
+            limitForPeriod: 10
+            limitRefreshPeriod: 10s
+            timeoutDuration: 3s

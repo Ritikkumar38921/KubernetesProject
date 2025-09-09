@@ -1,5 +1,7 @@
 package com.employee.OrganizationApplication.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,9 @@ public class Organization {
 	
 	@Column(name = "code")
 	private String code;
+	
+	@Column(name = "departments")
+	private List<DepartmentDTO> departments;
 
 	public Long getId() {
 		return id;
@@ -56,6 +61,14 @@ public class Organization {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public List<DepartmentDTO> getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(List<DepartmentDTO> departments) {
+		this.departments = departments;
 	}
 
 }

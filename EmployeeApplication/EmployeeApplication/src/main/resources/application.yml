@@ -1,0 +1,12 @@
+spring:
+   application:
+      name: EmployeeApplication
+      
+server:
+   port: 8081
+   
+spring:
+   datasource:
+      url: jdbc://localhost:5432
+      username: postgres
+      password: root

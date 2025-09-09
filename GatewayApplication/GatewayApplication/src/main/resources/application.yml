@@ -4,7 +4,7 @@ server:
 spring:
    application:
       name: GatewayApplication
-   
+
    cloud:
       kubernetes:
          discovery:
@@ -13,9 +13,23 @@ spring:
          discovery:
             enabled: true
          routes:
-           - id: employee-service
-             uri: lb://EmployeeApplication
-             predicates:
-                - path: /api/employee/*
-             filters:
-                
+         -  id: employee-service
+            uri: lb://EmployeeApplication
+            predicates:
+            -  path: /api/employees/**
+
+         -  id: department-service
+            uri: lb://DepartmentApplication
+            predicates:
+            -  path: /api/departments/**
+
+         -  id: organization-service
+            uri: lb://OrganizationApplication
+            predicates:
+            -  path: /api/organization/**
+
+management:
+   endpoints:
+      web:
+         exposure:
+            include: health,info,prometheus,gateway

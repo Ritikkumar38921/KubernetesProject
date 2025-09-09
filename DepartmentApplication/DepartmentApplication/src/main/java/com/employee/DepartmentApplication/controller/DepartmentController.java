@@ -42,9 +42,7 @@ public class DepartmentController {
     
     @GetMapping("/{id}/with-employees")
     public Department findByIdWithEmployees(@PathVariable Long id) {
-    	
-    	Department department = 
-    	
+    	return departmentService.findByIdWithEmployees(id);
     }
     
 }
