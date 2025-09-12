@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.employee.OrganizationApplication.DepartmentClient;
+import com.employee.OrganizationApplication.client.DepartmentClient;
 import com.employee.OrganizationApplication.db.OrganizationDb;
-import com.employee.OrganizationApplication.entity.DepartmentDTO;
-import com.employee.OrganizationApplication.entity.EmployeeDTO;
+import com.employee.OrganizationApplication.dto.DepartmentDTO;
+import com.employee.OrganizationApplication.dto.EmployeeDTO;
 import com.employee.OrganizationApplication.entity.Organization;
 
 @Service

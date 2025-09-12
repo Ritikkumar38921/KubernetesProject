@@ -1,4 +1,4 @@
-package com.employee.OrganizationApplication.entity;
+package com.employee.OrganizationApplication.dto;
 
 import java.util.ArrayList;
 import java.util.List;

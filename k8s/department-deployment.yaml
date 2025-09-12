@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: department
+  namespace: springboottest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: department
+  template:
+    metadata:
+      labels:
+        app: department
+    spec:
+      containers:
+      - name: department
+        image: ritikumar38921/department:latest
+        ports:
+        - containerPort: 8082

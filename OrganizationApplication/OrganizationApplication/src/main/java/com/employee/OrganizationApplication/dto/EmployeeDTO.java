@@ -1,4 +1,4 @@
-package com.employee.OrganizationApplication.entity;
+package com.employee.OrganizationApplication.dto;
 
 public class EmployeeDTO {
 	private Long id;

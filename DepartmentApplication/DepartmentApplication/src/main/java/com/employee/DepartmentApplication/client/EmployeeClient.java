@@ -12,7 +12,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 
-@FeignClient(name = "EmployeeApplication")
+@FeignClient(name = "EmployeeApplication" , url = "http://localhost:8081/")
 public interface EmployeeClient {
 
 	@GetMapping("/api/employees/department/{departmentId}")

@@ -2,6 +2,8 @@ package com.employee.OrganizationApplication.entity;
 
 import java.util.List;
 
+import com.employee.OrganizationApplication.dto.DepartmentDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "organization")
@@ -28,7 +31,7 @@ public class Organization {
 	@Column(name = "code")
 	private String code;
 	
-	@Column(name = "departments")
+	@Transient
 	private List<DepartmentDTO> departments;
 
 	public Long getId() {

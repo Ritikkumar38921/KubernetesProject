@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organization
+  namespace: springboottest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: organization
+  template:
+    metadata:
+      labels:
+        app: organization
+    spec:
+      containers:
+      - name: organization
+        image: ritikumar38921/organization:latest
+        ports:
+        - containerPort: 8083
